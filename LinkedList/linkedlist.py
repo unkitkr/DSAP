@@ -42,6 +42,35 @@ class LinkedList(object):
 		pos = pos-1
 		self.insert_after(pos,x)
 
+	def list_length(self):
+		counter = 0
+		current_node = self.head
+		while current_node:
+			counter += 1
+			current_node = current_node.next
+		return counter
+
+	def delete(self,pos):
+		if(pos == 0):
+			head = head.next
+
+		elif(pos>0 and pos<self.list_length()):
+			current_node = self.head
+			pos = pos - 1
+			counter = 0
+			while(counter != pos):
+				current_node = current_node.next
+				counter += 1
+			nodepos = current_node.next.next
+			current_node.next = nodepos
+		else:
+			current_node = self.head
+			while current_node.next.next:
+				current_node = current_node.next
+			current_node.next = None
+			
+
+
 
 
 
@@ -52,8 +81,8 @@ linkedlist.insert_back(202)
 linkedlist.insert_back(203)
 linkedlist.insert_back(205)
 linkedlist.insert_back(208)
-linkedlist.insert_front(209)
-linkedlist.insert_before(2,211)
+linkedlist.delete(4)
+print(linkedlist.list_length())
 linkedlist.print_list()
 
 
